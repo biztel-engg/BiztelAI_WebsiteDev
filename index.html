@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BiztelAI — Turn Manual Shopfloor Work Into Real-Time Controlled Systems</title>
+<meta name="description" content="BiztelAI uses vision-based AI deployed on the shopfloor to monitor operator actions, enforce SOPs, and prevent process deviations in real time." />
+<meta name="theme-color" content="#050608" />
+
+<!-- Favicon (inline SVG — BIZTEL square mark) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23050608'/%3E%3Crect x='6' y='6' width='20' height='20' fill='none' stroke='%2300f0c8' stroke-width='2'/%3E%3Crect x='11' y='11' width='10' height='10' fill='%2300f0c8'/%3E%3C/svg%3E" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="BiztelAI — Turn Manual Shopfloor Work Into Real-Time Controlled Systems" />
+<meta property="og:description" content="Vision-based AI deployed on the shopfloor — monitor operator actions, enforce SOPs, prevent deviations in real time." />
+<meta property="og:image" content="posters/cleaning.jpg" />
+<meta property="og:image:width" content="1280" />
+<meta property="og:image:height" content="760" />
+<meta property="og:site_name" content="BiztelAI" />
+
+<!-- Twitter card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="BiztelAI — Vision AI for the Shopfloor" />
+<meta name="twitter:description" content="Monitor operator actions, enforce SOPs, prevent process deviations in real time." />
+<meta name="twitter:image" content="posters/cleaning.jpg" />
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "BiztelAI Technologies",
+      "url": "https://www.biztel.ai/",
+      "email": "pugazh@biztel.ai",
+      "description": "Vision-based AI for shopfloor process monitoring, SOP validation, and real-time intervention.",
+      "sameAs": ["https://www.biztel.ai/"]
+    },
+    {
+      "@type": "Product",
+      "name": "BiztelAI Process Monitoring",
+      "description": "Real-time AI-based monitoring and control of manual operations using cameras and edge systems. Tracks operator actions step-by-step, validates execution using AI models trained on SOP, and triggers real-time alerts via PLC systems.",
+      "category": "Industrial AI / Computer Vision",
+      "brand": { "@type": "Brand", "name": "BiztelAI" }
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- Skip to content (keyboard accessibility) -->
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- Intro splash -->
+<div class="splash" id="splash">
+  <div class="splash__inner">
+    <div class="splash__bars">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="splash__text">
+      <span class="splash__lbl">// initializing biztel.ai</span>
+      <span class="splash__brand">BIZTEL<span style="color:var(--accent)">.</span>AI</span>
+      <span class="splash__pct" id="splashPct">000</span>
+    </div>
+  </div>
+</div>
+
+<!-- Scroll progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Cursor glow -->
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- Navigation -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#top" class="nav__logo" aria-label="BiztelAI home">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="28" height="28" stroke="currentColor" stroke-width="1.5"/>
+          <rect x="8" y="8" width="16" height="16" fill="currentColor"/>
+          <line x1="0" y1="16" x2="32" y2="16" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2 2"/>
+          <line x1="16" y1="0" x2="16" y2="32" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2 2"/>
+        </svg>
+      </span>
+      <span class="logo-text">BIZTEL<span class="logo-dot">.</span>AI</span>
+    </a>
+    <nav class="nav__links">
+      <a href="#top" data-scramble>Home</a>
+      <a href="#monitoring" data-scramble>Products</a>
+      <a href="#how" data-scramble>How It Works</a>
+      <a href="#why" data-scramble>Why Us</a>
+      <a href="#case-study" data-scramble>Case Study</a>
+    </nav>
+    <a href="#demo" class="btn btn--primary nav__cta" data-magnetic>
+      <span>Book a Demo</span>
+      <svg viewBox="0 0 24 24" fill="none" width="14" height="14"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg>
+    </a>
+
+    <!-- Mobile hamburger -->
+    <button type="button" class="nav__burger" id="navBurger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile menu panel -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <nav class="mobile-menu__links">
+    <a href="#top">Home</a>
+    <a href="#monitoring">Products</a>
+    <a href="#how">How It Works</a>
+    <a href="#why">Why Us</a>
+    <a href="#case-study">Case Study</a>
+  </nav>
+  <a href="#demo" class="btn btn--primary btn--lg mobile-menu__cta">
+    <span>Book a Demo</span>
+    <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg>
+  </a>
+  <a href="mailto:pugazh@biztel.ai" class="mobile-menu__email">pugazh@biztel.ai</a>
+</div>
+
+<main id="main">
+
+<!-- S1 — HERO -->
+<section class="hero" id="top">
+  <canvas id="heroCanvas" class="hero__canvas"></canvas>
+  <div class="hero__grid"></div>
+  <div class="hero__scan"></div>
+  <div class="hero__noise"></div>
+
+  <div class="hero__hud">
+    <div class="hud-line hud-tl"><span>// vision.layer.online</span></div>
+    <div class="hud-line hud-tr"><span>edge.runtime :: active</span></div>
+    <div class="hud-line hud-bl"><span>real-time · sop validated</span></div>
+    <div class="hud-line hud-br"><span>on-prem · zero egress</span></div>
+  </div>
+
+  <div class="hero__content">
+    <div class="hero__eyebrow">
+      <span class="dot"></span>
+      <span>VISION AI · ON-PREM · INDUSTRY 4.0</span>
+    </div>
+    <h1 class="hero__title" data-glitch>
+      <span class="line"><span class="line__inner" data-split>Turn manual</span></span>
+      <span class="line"><span class="line__inner" data-split>shopfloor work</span></span>
+      <span class="line"><span class="line__inner" data-split>into real-time</span></span>
+      <span class="line"><em><span class="line__inner" data-split>controlled systems.</span></em></span>
+    </h1>
+    <p class="hero__sub">
+      Monitor operator actions, enforce SOPs, and prevent process deviations using
+      vision-based AI deployed directly on your shopfloor.
+    </p>
+    <div class="hero__cta">
+      <a href="#demo" class="btn btn--primary btn--lg" data-magnetic>
+        <span>Book a Demo</span>
+        <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg>
+      </a>
+      <a href="#videos" class="btn btn--ghost btn--lg" data-magnetic>
+        <span>See It in Action</span>
+      </a>
+    </div>
+
+    <div class="hero__meta">
+      <div><span class="meta-num case-num--text">Real-time</span><span class="meta-lbl">SOP validation &amp; alerts</span></div>
+      <div><span class="meta-num case-num--text">On-Prem</span><span class="meta-lbl">Edge-first runtime</span></div>
+      <div><span class="meta-num case-num--text">PLC-Linked</span><span class="meta-lbl">Shopfloor intervention</span></div>
+    </div>
+  </div>
+
+  <div class="hero__scrollcue">
+    <span>SCROLL</span>
+    <div class="scroll-bar"><div class="scroll-bar__inner"></div></div>
+  </div>
+</section>
+
+<!-- S2 — VIDEO PROOF -->
+<section class="videos" id="videos">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2 class="section-title">Vision AI tracking and<br/>validating operator actions<br/>in <em>real time</em>.</h2>
+    </div>
+
+    <div class="video-grid">
+      <figure class="video-card reveal">
+        <span class="video-card__lbl">Live Process Monitoring Example</span>
+        <div class="video-card__frame">
+          <video
+            controls
+            muted
+            playsinline
+            preload="none"
+            poster="posters/cleaning.webp">
+            <source src="videos/cleaning_process.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-card__vignette"></div>
+          <button type="button" class="video-card__play" aria-label="Play video">
+            <span class="video-card__play-ring"></span>
+            <span class="video-card__play-ring video-card__play-ring--2"></span>
+            <span class="video-card__play-icon"></span>
+          </button>
+          <div class="video-card__corner video-card__corner--tl"></div>
+          <div class="video-card__corner video-card__corner--tr"></div>
+          <div class="video-card__corner video-card__corner--bl"></div>
+          <div class="video-card__corner video-card__corner--br"></div>
+        </div>
+        <figcaption class="video-card__cap">
+          AI validating cleaning process execution in real time against defined SOP.
+        </figcaption>
+      </figure>
+
+      <figure class="video-card reveal">
+        <span class="video-card__lbl">Sequence Validation Example</span>
+        <div class="video-card__frame">
+          <video
+            controls
+            muted
+            playsinline
+            preload="none"
+            poster="posters/bolt.webp">
+            <source src="videos/bolt_tightening.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-card__vignette"></div>
+          <button type="button" class="video-card__play" aria-label="Play video">
+            <span class="video-card__play-ring"></span>
+            <span class="video-card__play-ring video-card__play-ring--2"></span>
+            <span class="video-card__play-icon"></span>
+          </button>
+          <div class="video-card__corner video-card__corner--tl"></div>
+          <div class="video-card__corner video-card__corner--tr"></div>
+          <div class="video-card__corner video-card__corner--bl"></div>
+          <div class="video-card__corner video-card__corner--br"></div>
+        </div>
+        <figcaption class="video-card__cap">
+          AI verifying correct sequence execution in a bolt tightening operation.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- Marquee Ticker -->
+<section class="ticker" aria-hidden="true">
+  <div class="ticker__track">
+    <div class="ticker__group">
+      <span>VISION AI MONITORING</span><span class="ticker__dot">◆</span>
+      <span>SOP VALIDATION IN REAL TIME</span><span class="ticker__dot">◆</span>
+      <span>EDGE-FIRST DEPLOYMENT</span><span class="ticker__dot">◆</span>
+      <span>PLC-INTEGRATED ALERTS</span><span class="ticker__dot">◆</span>
+      <span>CYCLE-LEVEL TRACEABILITY</span><span class="ticker__dot">◆</span>
+      <span>ON-PREM · ZERO DATA EGRESS</span><span class="ticker__dot">◆</span>
+    </div>
+    <div class="ticker__group" aria-hidden="true">
+      <span>VISION AI MONITORING</span><span class="ticker__dot">◆</span>
+      <span>SOP VALIDATION IN REAL TIME</span><span class="ticker__dot">◆</span>
+      <span>EDGE-FIRST DEPLOYMENT</span><span class="ticker__dot">◆</span>
+      <span>PLC-INTEGRATED ALERTS</span><span class="ticker__dot">◆</span>
+      <span>CYCLE-LEVEL TRACEABILITY</span><span class="ticker__dot">◆</span>
+      <span>ON-PREM · ZERO DATA EGRESS</span><span class="ticker__dot">◆</span>
+    </div>
+  </div>
+</section>
+
+<!-- S3 — PROCESS MONITORING (PRIMARY) -->
+<section class="monitoring" id="monitoring">
+  <div class="container">
+    <div class="monitoring__inner">
+      <div class="monitoring__copy reveal">
+        <span class="monitoring__live">
+          <span class="live-dot"></span> LIVE IN PRODUCTION
+        </span>
+        <h2 class="section-title">Real-Time<br/>Process Monitoring.</h2>
+        <p class="monitoring__lead">
+          BiztelAI uses vision AI to monitor manual operations in real time, validate
+          execution against SOPs, and trigger immediate intervention when deviations occur.
+        </p>
+        <ul class="monitoring__list">
+          <li><span>+</span>Vision AI tracks operator actions step-by-step</li>
+          <li><span>+</span>AI models validate execution against trained SOP</li>
+          <li><span>+</span>Real-time alerts triggered via PLC systems</li>
+          <li><span>+</span>Works across assembly, cleaning, and inspection processes</li>
+        </ul>
+        <a href="#demo" class="btn btn--primary btn--lg" data-magnetic>
+          <span>Book a Demo</span>
+          <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg>
+        </a>
+      </div>
+
+      <div class="monitoring__media reveal">
+        <div class="frame">
+          <div class="frame-corner frame-corner--tl"></div>
+          <div class="frame-corner frame-corner--tr"></div>
+          <div class="frame-corner frame-corner--bl"></div>
+          <div class="frame-corner frame-corner--br"></div>
+          <div class="bbox bbox-1"><span class="bbox__lbl">SOP STEP 03 · OK</span></div>
+          <div class="bbox bbox-2"><span class="bbox__lbl">DEVIATION · 0.91</span></div>
+          <div class="bbox bbox-3"><span class="bbox__lbl">OPERATOR · A</span></div>
+          <div class="frame-scan"></div>
+          <div class="frame-crosshair"></div>
+          <div class="ocr-stream">
+            <span>&gt; cycle.start = 14:22:07</span>
+            <span>&gt; sop.step = 03 / 07</span>
+            <span>&gt; dwell = 2.4s · ok</span>
+            <span>&gt; deviation :: detected</span>
+            <span>&gt; plc.alert = sent</span>
+            <span>&gt; cycle.end = 14:22:31</span>
+            <span>&gt; cycle.next ::</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S4 — STELLANTIS CASE STUDY -->
+<section class="case" id="case-study">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2 class="section-title">Deployed in production<br/>at <em>Stellantis</em>.</h2>
+      <p class="section-sub">
+        BiztelAI is deployed in a production environment to monitor a critical
+        engine surface cleaning process.
+      </p>
+    </div>
+
+    <div class="case-grid reveal">
+      <div class="case-block">
+        <span class="case-block__lbl">/01 Validation</span>
+        <p>Real-time process validation using vision AI.</p>
+      </div>
+      <div class="case-block">
+        <span class="case-block__lbl">/02 Integration</span>
+        <p>Integrated with shopfloor systems and PLC controls.</p>
+      </div>
+      <div class="case-block case-block--metrics">
+        <span class="case-block__lbl">/03 Results</span>
+        <div class="case-stats">
+          <div>
+            <span class="case-num" data-count="1000" data-suffix="+">0+</span>
+            <span class="case-lbl">cycles monitored · first week</span>
+          </div>
+          <div>
+            <span class="case-num case-num--text">Stable</span>
+            <span class="case-lbl">deployment in live production</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S5 — HOW IT WORKS -->
+<section class="flow" id="how">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2 class="section-title">From cameras<br/>to controlled systems.</h2>
+    </div>
+
+    <div class="flow-track reveal">
+      <div class="flow-step"><span class="flow-step__num">01</span><h5>Capture</h5><p>Cameras capture operator actions on the line.</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><span class="flow-step__num">02</span><h5>Understand</h5><p>AI models understand the actions and sequence.</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><span class="flow-step__num">03</span><h5>Validate</h5><p>The system validates execution against the SOP.</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><span class="flow-step__num">04</span><h5>Intervene</h5><p>Alerts and interventions are triggered in real time.</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><span class="flow-step__num">05</span><h5>Trace</h5><p>Data is stored for traceability and analysis.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- S6 — OTHER SOLUTIONS -->
+<section class="solutions" id="solutions">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2 class="section-title">Other Solutions.</h2>
+      <p class="section-sub">Additional AI systems built around the same vision-and-edge stack.</p>
+    </div>
+
+    <div class="prod-grid prod-grid--four">
+      <article class="prod reveal">
+        <div class="prod__head"><span class="prod__no">/01</span></div>
+        <h3 class="prod__title">Image Inspection</h3>
+        <p class="prod__desc">AI-powered visual inspection for defect detection.</p>
+        <div class="prod__best">
+          <span class="prod__best-lbl">Best for</span>
+          <ul class="prod__list">
+            <li>Surface defects</li>
+            <li>Presence checks</li>
+            <li>Inline inspection</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="prod reveal">
+        <div class="prod__head"><span class="prod__no">/02</span></div>
+        <h3 class="prod__title">Dataflow Automation</h3>
+        <p class="prod__desc">AI models (Gemini, Gemma) convert handwritten and printed data into structured outputs.</p>
+        <div class="prod__best">
+          <span class="prod__best-lbl">Best for</span>
+          <ul class="prod__list">
+            <li>Removing manual data entry</li>
+            <li>ERP-ready data</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="prod reveal">
+        <div class="prod__head"><span class="prod__no">/03</span></div>
+        <h3 class="prod__title">Quality Decision Automation</h3>
+        <p class="prod__desc">AI models replicate human judgment on complex reports.</p>
+        <div class="prod__best">
+          <span class="prod__best-lbl">Best for</span>
+          <ul class="prod__list">
+            <li>Curve interpretation</li>
+            <li>Non-rule-based decisions</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="prod reveal">
+        <div class="prod__head"><span class="prod__no">/04</span></div>
+        <h3 class="prod__title">Final Inspection Workflow</h3>
+        <p class="prod__desc">Digitizes and standardizes inspection processes.</p>
+        <div class="prod__best">
+          <span class="prod__best-lbl">Best for</span>
+          <ul class="prod__list">
+            <li>Structured capture</li>
+            <li>Traceability</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- S7 — WHY BIZTELAI -->
+<section class="why" id="why">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2 class="section-title">Why BiztelAI.</h2>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-card__icon">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M8 24L20 36L40 12" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg>
+        </div>
+        <h4>Works on manual processes<br/>where automation fails</h4>
+        <p>Built specifically for the human-driven steps that traditional automation can't reach.</p>
+      </div>
+
+      <div class="why-card reveal">
+        <div class="why-card__icon">
+          <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="6" fill="currentColor"/><circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="1.5"/><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3"/></svg>
+        </div>
+        <h4>Real-time intervention,<br/>not just analytics</h4>
+        <p>Alerts fire mid-cycle — so deviations are corrected before they become defects.</p>
+      </div>
+
+      <div class="why-card reveal">
+        <div class="why-card__icon">
+          <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="14" width="32" height="22" rx="1" stroke="currentColor" stroke-width="1.5"/><path d="M16 14V10a8 8 0 0116 0v4" stroke="currentColor" stroke-width="1.5"/><circle cx="24" cy="25" r="2" fill="currentColor"/></svg>
+        </div>
+        <h4>Deployable fully<br/>on-premise</h4>
+        <p>Data stays inside your factory. Air-gapped operation supported by default.</p>
+      </div>
+
+      <div class="why-card reveal">
+        <div class="why-card__icon">
+          <svg viewBox="0 0 48 48" fill="none"><rect x="6" y="18" width="14" height="14" stroke="currentColor" stroke-width="1.5"/><rect x="28" y="18" width="14" height="14" stroke="currentColor" stroke-width="1.5"/><path d="M20 25h8" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <h4>Integrates with existing<br/>PLC and shopfloor systems</h4>
+        <p>No rip-and-replace. Drops in alongside the controls and infrastructure you already run.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S8 — CTA + DEMO FORM -->
+<section class="cta" id="demo">
+  <div class="cta__grid"></div>
+  <div class="container cta__inner reveal">
+    <h2 class="cta__title">See your shopfloor<br/>in a completely new way.</h2>
+    <p class="cta__sub">We'll evaluate one of your manual processes and show how it can be monitored and controlled in real time.</p>
+
+    <form class="demo-form" id="auditForm">
+      <div class="demo-form__row">
+        <label>
+          <span class="demo-form__lbl">Name</span>
+          <input type="text" name="name" placeholder="Your full name" required />
+        </label>
+        <label>
+          <span class="demo-form__lbl">Company</span>
+          <input type="text" name="company" placeholder="Company name" required />
+        </label>
+      </div>
+
+      <div class="demo-form__row">
+        <label>
+          <span class="demo-form__lbl">Role</span>
+          <input type="text" name="role" placeholder="e.g. Plant Head" required />
+        </label>
+        <label>
+          <span class="demo-form__lbl">Industry</span>
+          <select name="industry" required>
+            <option value="">Select industry</option>
+            <option>Automotive</option>
+            <option>Manufacturing</option>
+            <option>Aerospace</option>
+            <option>Electronics</option>
+            <option>Pharmaceuticals</option>
+            <option>Other</option>
+          </select>
+        </label>
+      </div>
+
+      <label>
+        <span class="demo-form__lbl">Process Type</span>
+        <select name="process_type" required>
+          <option value="">Select process type</option>
+          <option>Process Monitoring</option>
+          <option>Image Inspection</option>
+          <option>Dataflow Automation</option>
+          <option>Quality Decision Automation</option>
+          <option>Final Inspection Workflow</option>
+          <option>Other</option>
+        </select>
+      </label>
+
+      <label>
+        <span class="demo-form__lbl">Email</span>
+        <input type="email" name="email" placeholder="you@company.com" required />
+      </label>
+
+      <label>
+        <span class="demo-form__lbl">Message</span>
+        <textarea name="message" rows="3" placeholder="Briefly describe the process you'd like us to evaluate."></textarea>
+      </label>
+
+      <div class="demo-form__submit">
+        <button type="submit" class="btn btn--primary btn--lg" data-magnetic>
+          <span>Book a Demo</span>
+          <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg>
+        </button>
+        <span class="demo-form__hint">We'll reach out within 24 hours.</span>
+      </div>
+    </form>
+
+    <div class="cta__direct">
+      <span class="cta__direct-lbl">// or reach us directly</span>
+      <a href="mailto:pugazh@biztel.ai?subject=Book%20a%20Demo" class="cta__email" data-scramble>
+        pugazh@biztel.ai
+      </a>
+    </div>
+    <div class="cta__meta">You can share sample data or videos for faster evaluation.</div>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <span class="logo-mark">
+        <svg viewBox="0 0 32 32" fill="none"><rect x="2" y="2" width="28" height="28" stroke="currentColor" stroke-width="1.5"/><rect x="8" y="8" width="16" height="16" fill="currentColor"/></svg>
+      </span>
+      <div>
+        <span class="logo-text">BIZTEL<span class="logo-dot">.</span>AI</span>
+        <span class="footer__tagline">Vision AI for the manual steps automation can't reach.</span>
+      </div>
+    </div>
+    <div class="footer__cols">
+      <div>
+        <h6>Product</h6>
+        <a href="#monitoring">Process Monitoring</a>
+        <a href="#how">How It Works</a>
+        <a href="#why">Why BiztelAI</a>
+      </div>
+      <div>
+        <h6>Solutions</h6>
+        <a href="#solutions">Image Inspection</a>
+        <a href="#solutions">Dataflow Automation</a>
+        <a href="#solutions">Quality Decision</a>
+        <a href="#solutions">Final Inspection</a>
+      </div>
+      <div>
+        <h6>Company</h6>
+        <a href="#case-study">Stellantis Case Study</a>
+        <a href="mailto:pugazh@biztel.ai">pugazh@biztel.ai</a>
+        <a href="#demo">Book a Demo</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom container">
+    <span>© <span id="yr"></span> BiztelAI Technologies · All rights reserved.</span>
+    <span class="mono">on-prem · edge · industry 4.0</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
